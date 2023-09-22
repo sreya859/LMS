@@ -1,0 +1,60 @@
+create database LMS;
+use  lms;
+create table login(
+s_id varchar(100) not null,
+s_mailid varchar(50) not null,
+s_phno varchar(10),
+s_pass varchar(15),
+primary key(s_mailid));
+
+insert into login values
+('sreya567','sreya567@gmail.com',9345678923,'Ask$123'),
+('himaja34','himaja34@gmail.com',9396789213,'see*123'),
+('raj1122','raj1122@gmail.com',9090754292,'change#123'),
+('shanice23','shanice23@gmail.com',9396572213,'look@123'),
+('viswa345','viswa345@gmail.com',938965943,'hello*@123');
+
+create table learner(
+l_enroll varchar(100),
+l_Analysis int,
+cs_id varchar(100) not null,
+foreign key (cs_id) references login(s_id)
+);
+insert into learner values
+('DBMS course',75,'sreya567'),
+('C language course',15,'raj1122'),
+('Java course',55,'himaja34'),
+('C++ course',85,'shanice23'),
+('C language course',35,'viswa345');
+
+create table instructor(
+i_name varchar(15) not null,
+i_id varchar(10) not null,
+primary key(i_id)
+);
+
+insert into instructor values
+('Dr.John','J001'),
+('Dr.Alice','A081'),
+('Dr.Peter','P091'),
+('Dr.Kevin','K781'),
+('Dr.Clare','C661');
+
+create table courses(
+c_desc varchar(200),
+c_id varchar(20) not null,
+c_name varchar(20),
+c_iname varchar(10),
+c_duration varchar(30),
+primary key(c_id),
+foreign key (ciname_id) references instructor(i_name)
+);
+insert into courses values
+('Master C programming concepts from the ground up','Clang001','C Language','Dr.John','30 days'),
+('Master C++ programming concepts from the ground up','CPP002','C++ Language','Dr.Alice','45 days'),
+('Master Java programming concepts from the ground up','Java003','Java Language','Dr.John','40 days'),
+('Master Python programming concepts from the ground up','Py004','Python Language','Dr.Peter','20 days'),
+('Master ReactJS programming concepts from the ground up','RJS005','ReactJS Language','Dr.Clare','90 days'),
+('Master JavaScript programming concepts from the ground up','JS006','JavaScript Language','Dr.Peter','60 days'),
+('Master HTML programming concepts from the ground up','HTML007','HTML Language','Dr.Clare','15 days'),
+('Master CSS programming concepts from the ground up','CSS008','CSS Language','Dr.Kevin','20 days');
